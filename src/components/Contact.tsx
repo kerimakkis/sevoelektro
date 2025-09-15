@@ -70,9 +70,9 @@ export default function Contact() {
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -100, rotateY: -30 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -30 }}
+            transition={{ duration: 1, type: "spring", stiffness: 80 }}
           >
             <h2 className={`text-4xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Kontaktieren Sie uns</h2>
             <p className={`text-xl mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -175,9 +175,9 @@ export default function Contact() {
 
           {/* Visual Element */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: 100, rotateY: 30, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0, scale: 1 } : { opacity: 0, x: 100, rotateY: 30, scale: 0.8 }}
+            transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 80 }}
             className="flex items-center justify-center relative"
           >
             <div className="relative">

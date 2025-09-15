@@ -54,9 +54,9 @@ export default function FAQ() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={{ opacity: 0, x: -80, rotateX: 30 }}
+                animate={isInView ? { opacity: 1, x: 0, rotateX: 0 } : { opacity: 0, x: -80, rotateX: 30 }}
+                transition={{ duration: 0.8, delay: index * 0.15, type: "spring", stiffness: 100 }}
                 className={`rounded-lg overflow-hidden ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}
               >
                 <button
@@ -94,9 +94,9 @@ export default function FAQ() {
 
           {/* Visual Element */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, x: 80, rotateY: 25, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0, scale: 1 } : { opacity: 0, x: 80, rotateY: 25, scale: 0.9 }}
+            transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 80 }}
             className="flex items-center justify-center"
           >
             <div className="relative">

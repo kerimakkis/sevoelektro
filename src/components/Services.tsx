@@ -57,9 +57,9 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, rotateY: index % 2 === 0 ? -15 : 15 }}
+              animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: index % 2 === 0 ? -100 : 100, rotateY: index % 2 === 0 ? -15 : 15 }}
+              transition={{ duration: 0.8, delay: index * 0.2, type: "spring", stiffness: 100 }}
               className="relative overflow-hidden rounded-lg border-l-4 border-blue-500 hover-lift hover:border-blue-400 transition-all duration-300 group"
             >
               {/* Background Image */}

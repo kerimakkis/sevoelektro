@@ -96,9 +96,9 @@ export default function Resources() {
           {resources.map((resource, index) => (
             <motion.article
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 80, rotateZ: index % 2 === 0 ? -10 : 10, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateZ: 0, scale: 1 } : { opacity: 0, y: 80, rotateZ: index % 2 === 0 ? -10 : 10, scale: 0.9 }}
+              transition={{ duration: 0.8, delay: index * 0.15, type: "spring", stiffness: 100 }}
               className={`rounded-lg overflow-hidden hover-lift cursor-pointer transition-all duration-300 ${
                 theme === 'dark' 
                   ? 'bg-gray-900 hover:bg-gray-800' 

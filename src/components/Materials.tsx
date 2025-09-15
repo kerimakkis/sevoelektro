@@ -78,9 +78,9 @@ export default function Materials() {
           {materials.map((material, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 100, rotateX: 45, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0, scale: 1 } : { opacity: 0, y: 100, rotateX: 45, scale: 0.8 }}
+              transition={{ duration: 0.8, delay: index * 0.2, type: "spring", stiffness: 120 }}
               className="relative overflow-hidden rounded-lg text-center hover-lift group"
             >
               {/* Background Image */}

@@ -38,9 +38,9 @@ export default function About() {
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-center about-grid">
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -100, rotateY: -20 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -20 }}
+            transition={{ duration: 1, type: "spring", stiffness: 80 }}
           >
             <h2 className={`text-4xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Über uns</h2>
             <p className={`text-lg mb-6 leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -62,9 +62,9 @@ export default function About() {
 
           {/* Visual Element */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: 100, rotateY: 20, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0, scale: 1 } : { opacity: 0, x: 100, rotateY: 20, scale: 0.8 }}
+            transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 80 }}
             className="flex items-center justify-center relative"
           >
             <div className="relative">
