@@ -1,0 +1,209 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { MapPin, Mail, Phone, MessageCircle, Facebook, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { useTheme } from '@/contexts/ThemeContext'
+
+export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const { theme } = useTheme()
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      const headerHeight = 80
+      const targetPosition = element.offsetTop - headerHeight
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    setIsSubmitting(true)
+    
+    // Simulate newsletter subscription
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitStatus('success')
+      setEmail('')
+      
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 5000)
+    }, 2000)
+  }
+
+  const footerLinks = [
+    { href: '#home', label: 'Startseite' },
+    { href: '#services', label: 'Angebot' },
+    { href: '#about', label: 'Info' },
+    { href: '#materials', label: 'Materialien' },
+    { href: '#resources', label: 'Ressourcen' },
+    { href: '#contact', label: 'Kontakt' },
+    { href: '#faq', label: 'FAQ' }
+  ]
+
+  const socialLinks = [
+    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Instagram, href: '#', label: 'Instagram' }
+  ]
+
+  return (
+    <footer className="bg-gray-900 py-16">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 footer-grid">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-lg font-semibold mb-6 text-white">Kontakt</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-gray-300">
+                <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                <span>Atatürk Caddesi No:123, 34000 İstanbul</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                <span>info@sevoelektro.com</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <Phone className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                <span>+90 (212) 555 0123</span>
+              </div>
+            </div>
+            <button
+              onClick={() => scrollToSection('#contact')}
+              className="btn-primary mt-6"
+            >
+              Angebot anfordern
+            </button>
+          </motion.div>
+
+          {/* Newsletter */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-lg font-semibold mb-6 text-white">Bleiben Sie auf dem Laufenden</h3>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Erhalten Sie Updates über Entwicklungen in der Elektrobranche und unsere Sonderangebote.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="E-Mail-Adresse *"
+                required
+                className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none"
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-secondary w-full"
+              >
+                {isSubmitting ? 'Wird abonniert...' : 'Abonnieren'}
+              </button>
+              {submitStatus === 'success' && (
+                <div className="p-3 bg-green-600 text-white rounded-lg text-center text-sm">
+                  Abonnement erfolgreich erstellt!
+                </div>
+              )}
+            </form>
+          </motion.div>
+
+          {/* Menu */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-lg font-semibold mb-6 text-white">Menü</h3>
+            <ul className="space-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Social & Chat */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-lg font-semibold mb-6 text-white">Folgen Sie uns</h3>
+            <div className="space-y-3 mb-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                >
+                  <social.icon className="w-5 h-5" />
+                  <span>{social.label}</span>
+                </a>
+              ))}
+            </div>
+            <button
+              onClick={() => alert('Chat-Funktion wird bald verfügbar sein!')}
+              className="btn-primary w-full"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Jetzt chatten!
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Bottom Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <div className="text-gray-400 text-sm">
+            © 2024 Sevoelektro. Alle Rechte vorbehalten.
+          </div>
+          <div className="flex gap-6 text-sm">
+            <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+              Datenschutz
+            </button>
+            <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+              Impressum
+            </button>
+            <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+              Cookies
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </footer>
+  )
+}
