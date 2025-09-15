@@ -239,10 +239,12 @@ Bei Fragen oder Vorschlägen:
 
 ## 📄 Lizenz
 
-Dieses Projekt wurde speziell für das Unternehmen Sevoelektro entwickelt.
+Dieses Projekt wurde von **akkisTech** entwickelt und speziell für das Unternehmen Sevoelektro erstellt.
+
+**© 2025 akkisTech - Alle Rechte vorbehalten**
 
 ---
 
-**Entwickler**: Senior Full Stack Developer  
-**Datum**: Dezember 2024  
+**Entwickler**: Kerim Akkis - Junior Full Stack Developer  
+**Datum**: August 2025  
 **Version**: 1.0.0
