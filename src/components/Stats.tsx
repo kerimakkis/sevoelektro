@@ -9,15 +9,15 @@ export default function Stats() {
   const isInView = useInView(ref, { once: true })
 
   const stats = [
-    { number: '500+', label: 'Abgeschlossene Projekte' },
+    { number: '120+', label: 'Abgeschlossene Projekte' },
     { number: '25+', label: 'Jahre Erfahrung' },
-    { number: '50+', label: 'Fachkräfte' },
+    { number: '5+', label: 'Fachgebiete' },
     { number: '7/24', label: 'Notdienst' }
   ]
 
   return (
     <section className="py-16 bg-gray-800">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-7xl">
         <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-8 stats-grid">
           {stats.map((stat, index) => (
             <motion.div

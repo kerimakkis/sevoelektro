@@ -40,7 +40,7 @@ export default function Services() {
 
   return (
     <section id="services" className={`py-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -78,8 +78,8 @@ export default function Services() {
               
               {/* Content */}
               <div className="relative z-10 p-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/70 to-blue-400/70 rounded-lg flex items-center justify-center mb-6">
-                  <service.icon className="w-8 h-8 text-white/80" />
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/50 to-blue-400/50 rounded-lg flex items-center justify-center mb-6">
+                  <service.icon className="w-6 h-6 text-white/60" />
                 </div>
                 <h3 className={`text-xl font-semibold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                   {service.title}

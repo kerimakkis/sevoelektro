@@ -58,7 +58,7 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 header-bg ${
       isScrolled ? 'shadow-lg backdrop-blur-md' : ''
     }`}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center space-x-4">

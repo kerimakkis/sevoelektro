@@ -61,7 +61,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 py-16">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 footer-grid">
           {/* Contact Info */}
           <motion.div
@@ -74,7 +74,7 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-300">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                <span>Atatürk Caddesi No:123, 34000 İstanbul</span>
+                <span>Feldberg Straße 70, 64546 Mörfelden-Walldorf</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
@@ -82,7 +82,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <Phone className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                <span>+90 (212) 555 0123</span>
+                <span>+49 170 954 3397</span>
               </div>
             </div>
             <button

@@ -6,6 +6,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -35,8 +36,26 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // EmailJS configuration
+      const serviceId = 'service_votnslc' // EmailJS Service ID
+      const templateId = 'template_ux819oi' // EmailJS Template ID
+      const publicKey = '6fx7eDxVPymjwtNf8' // EmailJS Public Key
+      
+      // Prepare template parameters
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Seval Hayrulov',
+        to_email: 'info@sevoelektro.com'
+      }
+      
+      // Send email
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
       setIsSubmitting(false)
       setSubmitStatus('success')
       setFormData({
@@ -52,34 +71,48 @@ export default function Contact() {
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 5000)
-    }, 2000)
+      
+    } catch (error) {
+      console.error('Email gönderim hatası:', error)
+      setIsSubmitting(false)
+      setSubmitStatus('error')
+      
+      // Reset error status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 5000)
+    }
   }
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-16 md:py-20 lg:py-24 xl:py-32 relative">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
         style={{
           backgroundImage: "url('/daniele-la-rosa-messina-3-Xc8g-Zkvw-unsplash.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundAttachment: 'fixed'
         }}
       >
         <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gray-900/80' : 'bg-white/70'}`}></div>
       </div>
-      <div className="container mx-auto px-6 relative z-10">
-        <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-start">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-start">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -100, rotateY: -30 }}
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -30 }}
             transition={{ duration: 1, type: "spring", stiffness: 80 }}
+            className="py-6 md:py-8 lg:py-10 xl:py-12"
           >
-            <h2 className={`text-4xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Kontaktieren Sie uns</h2>
-            <p className={`text-xl mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+            <h2 className={`text-4xl font-bold mb-6 md:mb-8 lg:mb-10 xl:mb-12 pt-2 md:pt-4 lg:pt-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Kontaktieren Sie uns</h2>
+            <p className={`text-xl mb-8 md:mb-10 lg:mb-12 xl:mb-16 leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
               Es ist Zeit, etwas zu schaffen
             </p>
             
-            <form onSubmit={handleSubmit} className={`p-8 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white/90'}`}>
+            <form onSubmit={handleSubmit} className={`p-6 md:p-8 lg:p-10 xl:p-12 rounded-lg mt-4 md:mt-6 lg:mt-8 xl:mt-10 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white/90'}`}>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <input

@@ -1,6 +1,6 @@
 'use client'
 
-import { Zap } from 'lucide-react'
+import { Zap, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '@/contexts/ThemeContext'
 
@@ -23,17 +23,12 @@ export default function Hero() {
     <section id="home" className={`min-h-screen flex items-center relative overflow-hidden ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`} style={{ marginTop: 0, paddingTop: 0, top: 0 }}>
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
         style={{
           backgroundImage: "url('/hobi-industri-NLBJ2I0lNr4-unsplash.jpg')",
-          backgroundPosition: "center top",
+          backgroundPosition: "center center",
           backgroundSize: "cover",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          margin: 0,
-          padding: 0
+          backgroundAttachment: "fixed"
         }}
       >
         <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gray-900/70' : 'bg-white/60'}`}></div>
@@ -42,7 +37,7 @@ export default function Hero() {
       {/* Background Pattern Overlay */}
       <div className="absolute inset-0 bg-pattern-grid opacity-20"></div>
       
-      <div className="container mx-auto px-6 relative z-10 pt-20">
+      <div className="container mx-auto px-6 relative z-10 pt-20 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center hero-grid">
           {/* Text Content */}
           <motion.div
@@ -58,18 +53,41 @@ export default function Hero() {
               Deine Anlaufstelle in Sachen Elektrotechnik - Professionelle Lösungen für alle elektrischen Anforderungen
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start hero-buttons">
-              <button
+              <motion.a
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+                href="tel:+491709543397"
+                className="btn-primary flex items-center gap-3 py-4 hover:bg-transparent hover:border-2 hover:border-blue-500 hover:text-blue-500"
+              >
+                <Phone className="w-5 h-5" />
+                <div className="flex flex-col">
+                  <span className="text-xs font-medium opacity-80 leading-none">
+                    Jetzt anrufen
+                  </span>
+                  <span className="text-sm font-semibold leading-none">
+                    +49 170 954 3397
+                  </span>
+                </div>
+              </motion.a>
+              <motion.button
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
                 onClick={() => scrollToSection('#contact')}
-                className="btn-primary"
+                className="btn-secondary"
               >
                 Angebot anfordern
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
                 onClick={() => scrollToSection('#services')}
                 className="btn-secondary"
               >
                 Unsere Leistungen
-              </button>
+              </motion.button>
             </div>
           </motion.div>
 
