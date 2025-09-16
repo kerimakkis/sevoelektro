@@ -3,12 +3,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone, MessageCircle, Facebook, Linkedin, Twitter, Instagram } from 'lucide-react'
+import Link from 'next/link'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const { theme } = useTheme()
 
   const scrollToSection = (href: string) => {
@@ -23,24 +21,6 @@ export default function Footer() {
     }
   }
 
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email) return
-
-    setIsSubmitting(true)
-    
-    // Simulate newsletter subscription
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setEmail('')
-      
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 5000)
-    }, 2000)
-  }
 
   const footerLinks = [
     { href: '#home', label: 'Startseite' },
@@ -62,7 +42,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 py-16">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 footer-grid">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 footer-grid">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -93,40 +73,6 @@ export default function Footer() {
             </button>
           </motion.div>
 
-          {/* Newsletter */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-lg font-semibold mb-6 text-white">Bleiben Sie auf dem Laufenden</h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Erhalten Sie Updates über Entwicklungen in der Elektrobranche und unsere Sonderangebote.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="space-y-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="E-Mail-Adresse *"
-                required
-                className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-secondary w-full"
-              >
-                {isSubmitting ? 'Wird abonniert...' : 'Abonnieren'}
-              </button>
-              {submitStatus === 'success' && (
-                <div className="p-3 bg-green-600 text-white rounded-lg text-center text-sm">
-                  Abonnement erfolgreich erstellt!
-                </div>
-              )}
-            </form>
-          </motion.div>
 
           {/* Menu */}
           <motion.div
@@ -171,7 +117,12 @@ export default function Footer() {
               ))}
             </div>
             <button
-              onClick={() => alert('Chat-Funktion wird bald verfügbar sein!')}
+              onClick={() => {
+                const message = encodeURIComponent(
+                  "Hallo, ich interessiere mich für Ihre Elektro-Dienstleistungen. Können Sie mir ein Angebot machen?"
+                )
+                window.open(`https://wa.me/491709543397?text=${message}`, '_blank')
+              }}
               className="btn-primary w-full"
             >
               <MessageCircle className="w-5 h-5" />
@@ -186,21 +137,47 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+          className="border-t border-gray-800 pt-8"
         >
-          <div className="text-gray-400 text-sm">
-            © 2024 Sevoelektro. Alle Rechte vorbehalten.
+          {/* Main Footer Content */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+            <div className="text-gray-400 text-sm">
+              © 2024 Sevoelektro. Alle Rechte vorbehalten.
+            </div>
+            <div className="flex gap-6 text-sm">
+              <Link href="/datenschutz" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                Datenschutz
+              </Link>
+              <Link href="/impressum" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                Impressum
+              </Link>
+              <Link href="/cookies" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                Cookies
+              </Link>
+            </div>
           </div>
-          <div className="flex gap-6 text-sm">
-            <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-              Datenschutz
-            </button>
-            <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-              Impressum
-            </button>
-            <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-              Cookies
-            </button>
+          
+          {/* AkkisTech Credit */}
+          <div className="border-t border-gray-800 pt-2 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-3 text-gray-500 text-sm">
+              <span>Entwickelt und veröffentlicht von</span>
+              <a 
+                href="https://akkistech.de" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors duration-300"
+              >
+                <img 
+                  src="/logo_akkisTech.png" 
+                  alt="AkkisTech Logo" 
+                  className="w-18 h-18 object-contain"
+                />
+                <span className="font-semibold">AkkisTech</span>
+              </a>
+            </div>
+            <div className="text-gray-500 text-xs">
+              Professionelle Webentwicklung & IT-Lösungen
+            </div>
           </div>
         </motion.div>
       </div>

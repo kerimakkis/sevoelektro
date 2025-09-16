@@ -19,6 +19,7 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isNotRobot, setIsNotRobot] = useState(false)
 
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -34,6 +35,13 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Bot koruması kontrolü
+    if (!isNotRobot) {
+      alert('Bitte bestätigen Sie, dass Sie kein Roboter sind.')
+      return
+    }
+    
     setIsSubmitting(true)
     
     try {
@@ -66,6 +74,7 @@ export default function Contact() {
         subject: '',
         message: ''
       })
+      setIsNotRobot(false)
       
       // Reset status after 5 seconds
       setTimeout(() => {
@@ -184,10 +193,33 @@ export default function Contact() {
                 />
               </div>
               
+              {/* Bot Koruması */}
+              <div className="mb-6">
+                <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border border-gray-300 hover:border-blue-400 transition-colors duration-300">
+                  <input
+                    type="checkbox"
+                    checked={isNotRobot}
+                    onChange={(e) => setIsNotRobot(e.target.checked)}
+                    className={`w-5 h-5 text-blue-600 rounded border-2 focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 ${
+                      theme === 'dark' 
+                        ? 'bg-gray-800 border-gray-600 text-blue-400' 
+                        : 'bg-white border-gray-300 text-blue-600'
+                    }`}
+                  />
+                  <span className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Ich bin kein Roboter
+                  </span>
+                </label>
+              </div>
+              
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full"
+                disabled={isSubmitting || !isNotRobot}
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                  isSubmitting || !isNotRobot
+                    ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
+                    : 'btn-primary'
+                }`}
               >
                 {isSubmitting ? 'Wird gesendet...' : 'Absenden'}
               </button>
@@ -211,23 +243,27 @@ export default function Contact() {
             initial={{ opacity: 0, x: 100, rotateY: 30, scale: 0.8 }}
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0, scale: 1 } : { opacity: 0, x: 100, rotateY: 30, scale: 0.8 }}
             transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 80 }}
-            className="flex items-center justify-center relative"
+            className="flex items-center justify-center relative mt-8"
           >
             <div className="relative">
               {/* Main Icon */}
-              <motion.div
+              <motion.a
+                href="tel:+491709543397"
                 animate={{ 
-                  scale: [1, 1.05, 1],
+                  scale: [1, 1.15, 1],
+                  rotate: [0, 8, -8, 0],
+                  x: [0, 12, -12, 0],
+                  y: [0, -8, 8, 0]
                 }}
                 transition={{ 
                   duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="w-24 h-24 bg-gradient-to-br from-blue-500/70 to-blue-400/70 rounded-full flex items-center justify-center shadow-2xl"
+                className="w-24 h-24 bg-gradient-to-br from-blue-500/70 to-blue-400/70 rounded-full flex items-center justify-center shadow-2xl cursor-pointer hover:from-blue-600/80 hover:to-blue-500/80 transition-all duration-300"
               >
-                <Mail className="w-12 h-12 text-white/80" />
-              </motion.div>
+                <Phone className="w-12 h-12 text-white/80" />
+              </motion.a>
 
               {/* Floating Elements */}
               <motion.div

@@ -74,19 +74,24 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 40, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
-                onClick={() => scrollToSection('#contact')}
+                onClick={() => {
+                  const message = encodeURIComponent(
+                    "Hallo, ich interessiere mich für Ihre Elektro-Dienstleistungen. Können Sie mir ein Angebot machen?"
+                  )
+                  window.open(`https://wa.me/491709543397?text=${message}`, '_blank')
+                }}
                 className="btn-secondary"
               >
-                Angebot anfordern
+                Jetzt Chatten
               </motion.button>
               <motion.button
                 initial={{ opacity: 0, y: 40, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
-                onClick={() => scrollToSection('#services')}
+                onClick={() => scrollToSection('#contact')}
                 className="btn-secondary"
               >
-                Unsere Leistungen
+                Angebot anfordern
               </motion.button>
             </div>
           </motion.div>

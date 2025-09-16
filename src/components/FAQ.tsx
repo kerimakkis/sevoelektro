@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ChevronDown, HelpCircle } from 'lucide-react'
+import { ChevronDown, Mail } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function FAQ() {
@@ -100,19 +100,23 @@ export default function FAQ() {
             className="flex items-center justify-center"
           >
             <div className="relative">
-              <motion.div
+              <motion.a
+                href="#contact"
                 animate={{ 
-                  scale: [1, 1.05, 1],
+                  scale: [1, 1.15, 1],
+                  rotate: [0, 8, -8, 0],
+                  x: [0, 12, -12, 0],
+                  y: [0, -8, 8, 0]
                 }}
                 transition={{ 
                   duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="w-24 h-24 bg-gradient-to-br from-blue-500/70 to-blue-400/70 rounded-full flex items-center justify-center shadow-2xl"
+                className="w-24 h-24 bg-gradient-to-br from-blue-500/70 to-blue-400/70 rounded-full flex items-center justify-center shadow-2xl cursor-pointer hover:from-blue-600/80 hover:to-blue-500/80 transition-all duration-300"
               >
-                <HelpCircle className="w-12 h-12 text-white/80" />
-              </motion.div>
+                <Mail className="w-12 h-12 text-white/80" />
+              </motion.a>
             </div>
           </motion.div>
         </div>

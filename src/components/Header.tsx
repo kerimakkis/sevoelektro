@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Zap, Menu, X, Sun, Moon } from 'lucide-react'
+import { Zap, Menu, X, Lightbulb, LightbulbOff } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Header() {
@@ -33,8 +33,8 @@ export default function Header() {
 
   const navItems = [
     { href: '#home', label: 'Startseite' },
-    { href: '#services', label: 'Angebot' },
-    { href: '#about', label: 'Info' },
+    { href: '#contact', label: 'Angebot' },
+    { href: '#about', label: 'Über uns' },
     { href: '#materials', label: 'Materialien' },
     { href: '#resources', label: 'Ressourcen' },
     { href: '#contact', label: 'Kontakt' },
@@ -42,9 +42,9 @@ export default function Header() {
   ]
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    const element = document.querySelector(href) as HTMLElement
     if (element) {
-      const headerHeight = 80
+      const headerHeight = 100 // Header height'ı artırdım
       const targetPosition = element.offsetTop - headerHeight
       window.scrollTo({
         top: targetPosition,
@@ -108,9 +108,9 @@ export default function Header() {
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              <Sun className="w-5 h-5 text-yellow-400" />
+              <Lightbulb className="w-5 h-5 text-yellow-400 drop-shadow-[0_0_15px_rgba(251,191,36,0.8)] animate-pulse" />
             ) : (
-              <Moon className="w-5 h-5 text-blue-400" />
+              <LightbulbOff className="w-5 h-5 text-gray-400 opacity-60" />
             )}
           </button>
 
@@ -127,7 +127,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div className={`md:hidden mobile-menu ${isMenuOpen ? 'active' : ''}`}>
-          <div className="flex flex-col space-y-2 py-4">
+          <div className="flex flex-col space-y-1 py-4">
             {navItems.map((item) => {
               const sectionId = item.href.replace('#', '')
               const isActive = activeSection === sectionId
@@ -136,7 +136,11 @@ export default function Header() {
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className={`nav-button text-left w-full ${isActive ? 'active' : ''}`}
+                  className={`nav-button text-left w-full px-4 py-3 rounded-lg transition-all duration-200 ${
+                    isActive 
+                      ? 'bg-blue-600 text-white' 
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -154,13 +158,13 @@ export default function Header() {
             >
               {theme === 'dark' ? (
                 <>
-                  <Sun className="w-5 h-5 text-yellow-400 mr-2" />
+                  <Lightbulb className="w-5 h-5 text-yellow-400 drop-shadow-[0_0_15px_rgba(251,191,36,0.8)] animate-pulse mr-2" />
                   <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>Light Mode</span>
                 </>
               ) : (
                 <>
-                  <Moon className="w-5 h-5 text-blue-400 mr-2" />
-                  <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>Dark Mode</span>
+                  <LightbulbOff className="w-5 h-5 text-gray-400 opacity-60 mr-2" />
+                  <span className="text-gray-900">Dark Mode</span>
                 </>
               )}
             </button>
