@@ -58,7 +58,7 @@ export default function Contact() {
         subject: formData.subject,
         message: formData.message,
         to_name: 'Seval Hayrulov',
-        to_email: 'info@sevoelektro.com'
+        to_email: 'sevoelektro@outlook.com'
       }
       
       // Send email

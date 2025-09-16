@@ -67,7 +67,7 @@ export default function Impressum() {
                 <br />
                 <p><strong>Kontakt:</strong></p>
                 <p>Telefon: +49 170 954 3397</p>
-                <p>E-Mail: info@sevoelektro.com</p>
+                <p>E-Mail: sevoelektro@outlook.com</p>
               </div>
             </section>
 

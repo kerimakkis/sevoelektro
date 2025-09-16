@@ -68,7 +68,7 @@ export default function Datenschutz() {
                 <p>E-Mail: kerimakkis@gmail.com</p>
                 <p>Webseite: https://akkistech.de</p>
                 <p>Telefon: +49 170 954 3397</p>
-                <p>E-Mail: info@sevoelektro.com</p>
+                <p>E-Mail: sevoelektro@outlook.com</p>
               </div>
             </section>
 
@@ -149,7 +149,7 @@ export default function Datenschutz() {
                 Bei Fragen zum Datenschutz wenden Sie sich bitte an:
               </p>
               <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
-                <p><strong>E-Mail:</strong> info@sevoelektro.com</p>
+                <p><strong>E-Mail:</strong> sevoelektro@outlook.com</p>
                 <p><strong>Telefon:</strong> +49 170 954 3397</p>
               </div>
             </section>

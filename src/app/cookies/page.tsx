@@ -184,7 +184,7 @@ export default function Cookies() {
                 Bei Fragen zu unserer Cookie-Richtlinie wenden Sie sich bitte an:
               </p>
               <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
-                <p><strong>E-Mail:</strong> info@sevoelektro.com</p>
+                <p><strong>E-Mail:</strong> sevoelektro@outlook.com</p>
                 <p><strong>Telefon:</strong> +49 170 954 3397</p>
               </div>
             </section>

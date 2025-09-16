@@ -84,7 +84,7 @@ export default function RootLayout({
     "description": "Professionelle elektrische Lösungen für alle Ihre Anforderungen",
     "url": "https://sevoelektro.com",
     "telephone": "+491709543397",
-    "email": "info@sevoelektro.com",
+    "email": "sevoelektro@outlook.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Feldberg Straße 70",

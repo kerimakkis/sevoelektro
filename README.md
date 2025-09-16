@@ -234,7 +234,7 @@ Bearbeiten Sie die Texte in den Komponenten:
 ## 📞 Support
 
 Bei Fragen oder Vorschlägen:
-- E-Mail: info@sevoelektro.com
+- E-Mail: sevoelektro@outlook.com
 - Telefon: +90 (212) 555 0123
 
 ## 📄 Lizenz
