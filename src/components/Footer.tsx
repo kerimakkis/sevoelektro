@@ -1,16 +1,13 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone, MessageCircle, Facebook, Linkedin, Twitter, Instagram } from 'lucide-react'
 import Link from 'next/link'
-import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Footer() {
-  const { theme } = useTheme()
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    const element = document.querySelector(href) as HTMLElement
     if (element) {
       const headerHeight = 80
       const targetPosition = element.offsetTop - headerHeight

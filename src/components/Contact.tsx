@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { Phone, MapPin, Clock } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 import emailjs from '@emailjs/browser'
 
@@ -96,13 +96,12 @@ export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-20 lg:py-24 xl:py-32 relative">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
           backgroundImage: "url('/daniele-la-rosa-messina-3-Xc8g-Zkvw-unsplash.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundAttachment: 'fixed'
+          backgroundPosition: 'center center'
         }}
       >
         <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gray-900/80' : 'bg-white/70'}`}></div>

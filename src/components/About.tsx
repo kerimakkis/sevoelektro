@@ -12,7 +12,7 @@ export default function About() {
   const { theme } = useTheme()
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    const element = document.querySelector(href) as HTMLElement
     if (element) {
       const headerHeight = 80
       const targetPosition = element.offsetTop - headerHeight
@@ -26,13 +26,12 @@ export default function About() {
   return (
     <section id="about" className="py-32 md:py-40 lg:py-48 xl:py-56 relative w-full">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
           backgroundImage: "url('/hector-espinoza-LrH6fCRfvHg-unsplash.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundAttachment: 'fixed'
+          backgroundPosition: 'center center'
         }}
       >
         <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gray-800/75' : 'bg-white/65'}`}></div>

@@ -8,7 +8,7 @@ export default function Hero() {
   const { theme } = useTheme()
   
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    const element = document.querySelector(href) as HTMLElement
     if (element) {
       const headerHeight = 80
       const targetPosition = element.offsetTop - headerHeight
@@ -23,12 +23,11 @@ export default function Hero() {
     <section id="home" className={`min-h-screen flex items-center relative overflow-hidden ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`} style={{ marginTop: 0, paddingTop: 0, top: 0 }}>
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
           backgroundImage: "url('/hobi-industri-NLBJ2I0lNr4-unsplash.jpg')",
           backgroundPosition: "center center",
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed"
+          backgroundSize: "cover"
         }}
       >
         <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gray-900/70' : 'bg-white/60'}`}></div>

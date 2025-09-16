@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X, Lightbulb, LightbulbOff } from 'lucide-react'
+import { Lightbulb, LightbulbOff } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Header() {
