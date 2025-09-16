@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Zap, Menu, X, Lightbulb, LightbulbOff } from 'lucide-react'
+import { Menu, X, Lightbulb, LightbulbOff } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Header() {
@@ -37,7 +37,7 @@ export default function Header() {
     { href: '#about', label: 'Über uns' },
     { href: '#materials', label: 'Materialien' },
     { href: '#resources', label: 'Ressourcen' },
-    { href: '#contact', label: 'Kontakt' },
+    { href: '#contact', label: 'Kontakt', key: 'kontakt' },
     { href: '#faq', label: 'FAQ' }
   ]
 
@@ -61,13 +61,21 @@ export default function Header() {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500/70 to-blue-400/70 rounded-lg flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white/80" />
+          <div className="flex items-center space-x-8">
+            <div className="w-16 h-16 rounded-lg overflow-hidden">
+              <img 
+                src="/SEVO_Logo3 (1) (1).png" 
+                alt="SEVOELEKTRO Logo" 
+                className={`w-full h-full object-contain transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'brightness-0 invert' // Dark mode: beyaz logo
+                    : 'brightness-0' // Light mode: siyah logo
+                }`}
+              />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white">SEVOELEKTRO</h1>
-              <span className="text-sm text-gray-400">Elektrische Lösungen</span>
+              <h1 className="text-2xl font-bold text-white">SEVO</h1>
+              <span className="text-2sm text-gray-400">ELEKTROTECHNIK</span>
             </div>
           </div>
 
@@ -79,7 +87,7 @@ export default function Header() {
               
               return (
                 <button
-                  key={item.href}
+                  key={item.key || item.href}
                   onClick={() => scrollToSection(item.href)}
                   className={`nav-button ${isActive ? 'active' : ''}`}
                 >
@@ -134,7 +142,7 @@ export default function Header() {
               
               return (
                 <button
-                  key={item.href}
+                  key={item.key || item.href}
                   onClick={() => scrollToSection(item.href)}
                   className={`nav-button text-left w-full px-4 py-3 rounded-lg transition-all duration-200 ${
                     isActive 
