@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "SEVOELEKTRO - Professionelle Elektrische Lösungen in Mörfelden-Walldorf",
   description: "Professionelle elektrische Lösungen für alle Ihre Anforderungen. Elektroinstallation, Reparaturen, Wartung und Beratung in Mörfelden-Walldorf und Umgebung. Jetzt anrufen: +49 170 954 3397",
-  keywords: "Elektriker, Elektroinstallation, Elektroreparatur, Mörfelden-Walldorf, Elektrotechnik, Elektrische Lösungen, Seval Hayrulov, Elektroservice",
+  keywords: "sevoelektro, sevo elektro, sevo, elektro, SEVO Elektro, SEVOELEKTRO, mörfelden, elektroteknik, elektrik, Elektriker, Elektroinstallation, Elektroreparatur, Mörfelden-Walldorf, Elektrotechnik, Elektrische Lösungen, Seval Hayrulov, Elektroservice",
   authors: [{ name: "Seval Hayrulov", url: "https://sevoelektro.com" }],
   creator: "SEVOELEKTRO",
   publisher: "SEVOELEKTRO",
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     url: 'https://sevoelektro.com',
     siteName: 'SEVOELEKTRO',
-    title: 'SEVOELEKTRO - Professionelle Elektrische Lösungen',
-    description: 'Professionelle elektrische Lösungen für alle Ihre Anforderungen. Elektroinstallation, Reparaturen, Wartung und Beratung in Mörfelden-Walldorf.',
+    title: 'SEVOELEKTRO - Professionelle Elektrische Lösungen | Sevo Elektro',
+    description: 'Professionelle elektrische Lösungen für alle Ihre Anforderungen. Elektroinstallation, Reparaturen, Wartung und Beratung in Mörfelden-Walldorf. Sevo Elektro - Ihr vertrauensvoller Elektriker für Elektroteknik und Elektrik.',
     images: [
       {
         url: '/SEVO_Logo3 (1) (1).png',
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEVOELEKTRO - Professionelle Elektrische Lösungen',
-    description: 'Professionelle elektrische Lösungen für alle Ihre Anforderungen. Elektroinstallation, Reparaturen, Wartung und Beratung.',
+    title: 'SEVOELEKTRO - Professionelle Elektrische Lösungen | Sevo Elektro',
+    description: 'Professionelle elektrische Lösungen für alle Ihre Anforderungen. Elektroinstallation, Reparaturen, Wartung und Beratung. Sevo Elektro - Ihr vertrauensvoller Elektriker für Elektroteknik und Elektrik.',
     images: ['/SEVO_Logo3 (1) (1).png'],
   },
   verification: {
@@ -81,7 +81,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "SEVOELEKTRO",
-    "description": "Professionelle elektrische Lösungen für alle Ihre Anforderungen",
+    "alternateName": ["Sevo Elektro", "SEVO Elektro", "sevoelektro", "Sevo Elektroteknik", "Sevo Elektrik"],
+    "description": "Professionelle elektrische Lösungen für alle Ihre Anforderungen - Sevo Elektro für Elektroteknik und Elektrik in Mörfelden",
     "url": "https://sevoelektro.com",
     "telephone": "+491709543397",
     "email": "sevoelektro@outlook.com",

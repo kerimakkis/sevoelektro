@@ -10,5 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/private/', '/admin/'],
     },
     sitemap: 'https://sevoelektro.com/sitemap.xml',
+    host: 'https://sevoelektro.com',
   }
 }
